@@ -1,0 +1,30 @@
+/* 各元素居中，字体设置 */
+.container{
+    position: relative;
+}
+p{
+    text-align: center;
+    font-weight: 600;
+    font-size:19px;
+}
+.btn-container{
+    width:69.31px;
+    margin:40px auto 0;
+}
+
+/* 线条的初始状态：宽度，颜色 */
+.container span{
+    position: absolute;
+    display: inline-block;
+    width:0;
+    height:5px;
+    background-color: #1C86EE;
+}
+
+/* 线条的起始位置（中间） */
+#line-left{
+    right:50%;
+}
+#line-right{
+    left:50%;
+}
