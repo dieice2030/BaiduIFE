@@ -1,0 +1,78 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+/* 黑色的背景色加上蓝色透明的方块很有感觉 */
+body{
+    background-color: black;
+    overflow:hidden;
+}
+
+/* 画布视距 */
+.viewport{
+    perspective: 500px;
+}
+
+/* 方块容器，不知何故，不可以直接操作作为方块每个面的父元素.cube */
+.container {
+    position: relative;
+    perspective-origin: 50% 50%;
+    transform-style: preserve-3d;
+}
+.container:hover{
+    animation: test 8s infinite;
+    animation-timing-function:linear;
+}
+
+.cube {
+    width: 200px;
+    height: 200px;
+    margin: 200px auto 0;
+}
+
+/* 统一每个面的背景色与边距 */
+.cube div {
+    border: 2px solid rgba(23, 111, 194, 0.945);
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    background-color: rgba(23, 111, 194, 0.363);
+    /* opacity: 0.8; */
+}
+
+.cube div:nth-child(1) {
+    transform: translateY(100px) rotateX( 90deg);
+}
+
+.cube div:nth-child(2) {
+    transform: translateY(-100px) rotateX( -90deg);
+}
+
+.cube div:nth-child(3) {
+    transform: translateX(100px) rotateY( 90deg);
+}
+
+.cube div:nth-child(4) {
+    transform: translateX(-100px) rotateY( -90deg);
+}
+
+.cube div:nth-child(5) {
+    transform: translateZ(100px);
+}
+
+.cube div:nth-child(6) {
+    transform: translateZ(-100px);
+}
+
+/* 动画 */
+@keyframes test{
+    0%{
+        transform: rotateY(0deg);
+
+    }
+    
+    100%{
+        transform:rotateY(360deg);
+    }
+}
