@@ -4,19 +4,31 @@
 #positive{
     position: absolute;
     z-index:1000;
-    backface-visibility: hidden;   /*重点:隐藏被旋转的元素的背面*/
-    transition: transform 1s;
 }
 #negative{
     position: absolute;
+    transform: rotateY(180deg);
+}
+.positive{
+    position: absolute;
+    z-index:1000;
+    backface-visibility: hidden;   /*重点:隐藏被旋转的元素的背面*/
+    transition: transform 1s;
+    width:250px;
+    height:350px;
+}
+.negative{
+    position: absolute;
     z-index: -1000;
     transition: transform 1s;
+    width:250px;
+    height:350px;
 }
-.translation-3d:hover #positive{
+.translation-3d:hover .positive{
     transform: rotateY(180deg);
     transition: transform 1s;
 }
-.translation-3d:hover #negative{
+.translation-3d:hover .negative{
     transform: rotateY(180deg);
     transition: transform 1s;
 }
