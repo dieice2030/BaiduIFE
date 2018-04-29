@@ -156,6 +156,7 @@
                 margin-top: -26px;
                 position: absolute;
                 left: 0;
+                transition: border-radius 1s;
             }
             .mouth-wrap .right {
                 border-bottom: 4px solid #000;
@@ -186,6 +187,14 @@
             .face:hover + .ear-wrap .right{
                 transform:rotate(15deg);
                 transition:transform 1s;
+            }
+            .face:hover .mouth{
+                border-radius: 0% 40% 50% 50%;
+                transition: border-radius 1s;
+            }
+            .face:hover .mouth-wrap .right{
+                border-radius: 40% 0% 50% 50%;
+                transition: border-radius 1s;
             }
 
 
