@@ -1,0 +1,55 @@
+*{
+    box-sizing: border-box;
+    margin:0;
+    overflow: hidden;
+}
+img{
+    position: absolute;
+    /* visibility: hidden; */
+}
+#showing,#showing div{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-image: url(1.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+#bar{
+    position:absolute;
+    bottom:20px;
+    z-index: 300;
+}
+#bar li{
+    display:inline-block;
+    margin: 5px;
+}
+#bar img{
+    position: relative;
+    width:210px;
+    height:120px;
+    
+}
+
+#bar:hover + #showing img{
+    visibility: visible;
+    cursor: pointer;
+    background-color:black;
+    animation:test 2s;
+}
+/* #showing{
+    background-color:black;
+} */
+
+@keyframes test{
+    0%{
+        left:-500px;
+        opacity: 0;
+    }
+    100%{
+        left:0;
+        opacity: 1;
+    }
+}

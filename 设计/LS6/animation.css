@@ -1,0 +1,41 @@
+@keyframes test1{
+    0%{
+        left:-500px;
+    }
+    100%{
+        left:0;
+    }
+}
+
+@keyframes test2{
+    0%{
+        top:350px;
+    }
+    100%{
+        left:0;
+    }
+}
+@keyframes test3{
+    0%{
+        transform: scale(0.1);
+    }
+    100%{
+        transform: scale(1) ease-in;
+    }
+}
+@keyframes test4{
+    0%{
+        transform: scale(2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+@keyframes test5{
+    0%{
+        transform: scale(0.1) rotateZ(0);
+    }
+    100%{
+        transform: scale(1) rotateZ(360deg);
+    }
+}
