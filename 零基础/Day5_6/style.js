@@ -6,7 +6,7 @@ function checkStyle(i, button) {
     var link = document.getElementsByTagName('link')[0];
     button[i].addEventListener('click', function () {
         link.removeAttribute('href')
-        link.href = 'css/style_' + (i + 1) + '.css';
+        link.href = './css/style_' + (i + 1) + '.css';
         
     });
 }
