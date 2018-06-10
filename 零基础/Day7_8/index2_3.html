@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        /* 方法3：只需将父元素display设置为flex */
+        div {
+            box-sizing: border-box;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            position: relative;
+            border: 1px solid red;
+        }
+
+        /* 固定div的flex设置为none(0 0 auto) */
+        .left {
+            width: 300px;
+            flex:none;
+            border: 1px solid black;
+        }
+
+        .right {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="left">
+            <p>asdf kjoiu sdoiub weriou sdsjadlkf aslkdjfiodsu xzlkjcfido consdiur tsekru dksjd fiu sldkfjius erkj iusdfdskfjieur
+                sdfsd lk
+            </p>
+            <p>asdf kjoiu sdoiub weriou sdsjadlkf aslkdjfiodsu xzlkjcfido consdiur tsekru dksjd fiu sldkfjius erkj iusdfdskfjieur
+                sdfsd lk
+            </p>
+            <p>asdf kjoiu sdoiub weriou sdsjadlkf aslkdjfiodsu xzlkjcfido consdiur tsekru dksjd fiu sldkfjius erkj iusdfdskfjieur
+                sdfsd lk
+            </p>
+        </div>
+        <div class="right">
+            <p>asdf biou oiu sdkflj opiu werlkj sdoiu zxlckjf soiu lkdjroieuw sldkjf siou ekj dfiu bkuciu oe kdjfoisdu reljk
+                nxkc fiouero erjksl skdjflsdfjio urkdjskl fiur ekj kdfiuf ekrj diuf dkfj iu</p>
+            <p>asdf biou oiu sdkflj opiu werlkj sdoiu zxlckjf soiu lkdjroieuw sldkjf siou ekj dfiu bkuciu oe kdjfoisdu reljk
+                nxkc fiouero erjksl skdjflsdfjio urkdjskl fiur ekj kdfiuf ekrj diuf dkfj iu</p>
+            <p>asdf biou oiu sdkflj opiu werlkj sdoiu zxlckjf soiu lkdjroieuw sldkjf siou ekj dfiu bkuciu oe kdjfoisdu reljk
+                nxkc fiouero erjksl skdjflsdfjio urkdjskl fiur ekj kdfiuf ekrj diuf dkfj iu</p>
+            <p>asdf biou oiu sdkflj opiu werlkj sdoiu zxlckjf soiu lkdjroieuw sldkjf siou ekj dfiu bkuciu oe kdjfoisdu reljk
+                nxkc fiouero erjksl skdjflsdfjio urkdjskl fiur ekj kdfiuf ekrj diuf dkfj iu</p>
+            <p>asdf biou oiu sdkflj opiu werlkj sdoiu zxlckjf soiu lkdjroieuw sldkjf siou ekj dfiu bkuciu oe kdjfoisdu reljk
+                nxkc fiouero erjksl skdjflsdfjio urkdjskl fiur ekj kdfiuf ekrj diuf dkfj iu</p>
+            <p>asdf biou oiu sdkflj opiu werlkj sdoiu zxlckjf soiu lkdjroieuw sldkjf siou ekj dfiu bkuciu oe kdjfoisdu reljk
+                nxkc fiouero erjksl skdjflsdfjio urkdjskl fiur ekj kdfiuf ekrj diuf dkfj iu</p>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

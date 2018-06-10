@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        /* 方法1：双Float,需要对父元素清除float，以“撑起父元素” */
+        div{
+            box-sizing: border-box;
+        }
+        /* 使用overflow:auto清除float */
+        .clearfix {
+            border: 1px solid red;
+            overflow: auto;
+        }
+
+        /* 使用after伪类清除float */
+        /* .clearfix:after {
+            content: "";
+            height: 0;
+            line-height: 0;
+            display: block;
+            clear: both;
+            visibility: hidden;
+        }*/
+
+        .left {
+            border: 1px solid black;
+            width: 30%;
+            float: left;
+        }
+
+        .right {
+            border: 1px solid black;
+            float: right;
+            width: 70%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clearfix">
+        <div class="left">
+            <p>asdf kjoiu sdoiub weriou sdsjadlkf aslkdjfiodsu xzlkjcfido consdiur tsekru dksjd fiu sldkfjius erkj iusdfdskfjieur
+                sdfsd lk</p>
+            <p>asdf kjoiu sdoiub weriou sdsjadlkf aslkdjfiodsu xzlkjcfido consdiur tsekru dksjd fiu sldkfjius erkj iusdfdskfjieur
+                sdfsd lk</p>
+            <p>asdf kjoiu sdoiub weriou sdsjadlkf aslkdjfiodsu xzlkjcfido consdiur tsekru dksjd fiu sldkfjius erkj iusdfdskfjieur
+                sdfsd lk</p>
+        </div>
+        <div class="right">
+            <p>asdf biou oiu sdkflj opiu werlkj sdoiu zxlckjf soiu lkdjroieuw sldkjf siou ekj dfiu bkuciu oe kdjfoisdu reljk
+                nxkc fiouero erjksl skdjflsdfjio urkdjskl fiur ekj kdfiuf ekrj diuf dkfj iu</p>
+            <p>asdf biou oiu sdkflj opiu werlkj sdoiu zxlckjf soiu lkdjroieuw sldkjf siou ekj dfiu bkuciu oe kdjfoisdu reljk
+                nxkc fiouero erjksl skdjflsdfjio urkdjskl fiur ekj kdfiuf ekrj diuf dkfj iu</p>
+            <p>asdf biou oiu sdkflj opiu werlkj sdoiu zxlckjf soiu lkdjroieuw sldkjf siou ekj dfiu bkuciu oe kdjfoisdu reljk
+                nxkc fiouero erjksl skdjflsdfjio urkdjskl fiur ekj kdfiuf ekrj diuf dkfj iu</p>
+            <p>asdf biou oiu sdkflj opiu werlkj sdoiu zxlckjf soiu lkdjroieuw sldkjf siou ekj dfiu bkuciu oe kdjfoisdu reljk
+                nxkc fiouero erjksl skdjflsdfjio urkdjskl fiur ekj kdfiuf ekrj diuf dkfj iu</p>
+            <p>asdf biou oiu sdkflj opiu werlkj sdoiu zxlckjf soiu lkdjroieuw sldkjf siou ekj dfiu bkuciu oe kdjfoisdu reljk
+                nxkc fiouero erjksl skdjflsdfjio urkdjskl fiur ekj kdfiuf ekrj diuf dkfj iu</p>
+            <p>asdf biou oiu sdkflj opiu werlkj sdoiu zxlckjf soiu lkdjroieuw sldkjf siou ekj dfiu bkuciu oe kdjfoisdu reljk
+                nxkc fiouero erjksl skdjflsdfjio urkdjskl fiur ekj kdfiuf ekrj diuf dkfj iu</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

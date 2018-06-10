@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .header-wrapper {
+            position: relative;
+            background: rgb(56, 56, 56);
+            color: white;
+        }
+
+        .header {
+            background: rgb(56, 56, 56);
+            height: 70px;
+            position: relative;
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        .header h1 {
+            line-height: 70px;
+        }
+
+        #tools {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+        #tools ul {
+            list-style: none;
+        }
+
+        #tools li {
+            display: inline-block;
+        }
+        #tools li a{
+            color:silver;
+        }
+
+        .banner-wrapper {
+            background: greenyellow;
+            position: relative;
+        }
+
+        .banner {
+            position: relative;
+            height: 200px;
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        #banner {
+            position: absolute;
+            bottom: 20px;
+            right: 0;
+        }
+        #banner ul{
+            list-style: none;
+        }
+        #banner li{
+            display:inline-block;
+            border:1px solid black;
+            padding:7px;
+            background: lightgoldenrodyellow;
+            opacity: 0.5;
+        }
+        #banner .active{
+            padding-top:1.8em;
+            opacity: 1;
+        }
+
+        .nav-wrapper {
+            position: relative;
+            border-bottom: 1.2px solid lightgray;
+            height: 62px;
+        }
+
+        .nav {
+            padding-top: 20px;
+            width: 960px;
+            margin: 0 auto;
+        }
+
+        .nav ul {
+            /* 去掉因为空格（回车）引起的li之间的间隙 */
+            font-size: 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .nav li {
+            font-size: 16px;
+            padding: 10px 20px;
+            display: inline-block;
+            border: solid lightgray;
+            background:silver;
+            border-width: 1.2px 1.2px 0 1.2px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .nav .active {
+            background: white;
+        }
+
+        .main-wrapper {
+
+            display: flex;
+        }
+        .main{
+            display:flex;
+            flex-wrap: wrap;
+            width:960px;
+            margin:0 auto;
+        }
+        .main div{
+            flex:1;
+            padding:80px;
+            border: 1.2px solid lightgray;
+            margin:3px;
+        }
+        .footer{
+            height:100px;
+            padding-top:20px;
+            background:gray;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header-wrapper">
+            <div class="header">
+                <h1>Logo</h1>
+                <div id="tools">
+                    <ul>
+                        <li><a href="#1">Github</a></li>
+                        <li><a href="#2">Register</a></li>
+                        <li><a href="#3">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="banner-wrapper">
+            <div class="banner">
+                <div id="banner">
+                    <ul>
+                        <li>1</li>
+                        <li class="active">2</li>
+                        <li>3</li>
+                        <li>4</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="nav-wrapper">
+            <div class="nav">
+                <ul>
+                    <li class="active">HOME</li>
+                    <li>PROFILE</li>
+                    <li>ABOUT</li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-wrapper">
+            <div class="main">
+                    <div class="content1">
+                        <p>This is content1</p>
+                    </div>
+                    <div class="content2">
+                        <p>MaybeContent2</p>
+                    </div>
+                    <div class="content3">
+                        <p>Content3</p>
+                    </div>
+                    <div class="content4">
+                        <p>Content4</p>
+                    </div>
+                    <div class="content5">
+                        <p>Content5</p>
+                    </div>
+                    <div class="content6">
+                        <p>Content6</p>
+                    </div>
+                    <div class="content7">
+                        <p>Content7</p>
+                    </div>
+
+                    <div class="content8">
+                        <p>Content8</p>
+                    </div>
+                    <div class="content9">
+                        <p>Content9</p>
+                    </div>
+                    <div class="content10">
+                        <p>Content10</p>
+                    </div>
+
+            </div>
+
+        </div>
+        <div class="footer">
+            <p>© 2018 ife.baidu.com</p>
+        </div>
+    </div>
+</body>
+
+</html>
