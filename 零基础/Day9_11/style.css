@@ -1,0 +1,452 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 1519px;
+}
+.header-wrapper {
+    height: 940px;
+    background-image: url(images/ife_img_01.png);
+    background-size: 100% auto;
+}
+
+.header {
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.header h1 {
+    color: white;
+    font-size: 50px;
+    font-weight: lighter;
+    padding: 150px 0 60px 0;
+}
+
+.header p {
+    /* padding:0 120px 10px 120px; */
+    width: 660px;
+    margin: 0 auto;
+    line-height: 40px;
+    color: lightgray;
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+#form_sign {
+    margin-top: 70px;
+    padding-top: 50px;
+    border: solid silver;
+    border-width: 1px 0 1px 0;
+}
+
+#form_sign h2 {
+    font-weight: normal;
+    color: white;
+}
+
+#form_sign p {
+    font-size: 14px;
+    opacity: 0.5;
+}
+
+#form_sign form {
+    width: 660px;
+    margin: 40px auto;
+    display: flex;
+    align-items: center;
+}
+
+#form_sign input {
+    background: transparent;
+    border: thin solid white;
+    padding: 12px;
+    margin-right: 16px;
+    width: 240px;
+    color: white;
+}
+
+#form_sign button {
+    width: 125px;
+    height: 44px;
+    background-color: white;
+    border: 2px lightgray;
+    border-radius: 2.4px;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Montserrat;
+}
+
+.feature_1-wrapper {
+    position: relative;
+}
+
+.feature_1 {
+    padding:100px 0 50px 0;
+    width: 1060px;
+    margin: 0 auto;
+    text-align: center;
+}
+.feature_1 h6{
+    font-size: 1em;
+    font-weight: normal;
+    /* line-height: 20px; */
+    padding-bottom: 30px;
+}
+.feature_1 h1{
+    font-size:40px;
+    width:700px;
+    margin: 0 auto 60px;
+    font-weight: lighter;
+}
+
+.feature_1-detail {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.feature_1-detail section {
+    flex: 1 500px;
+    text-align: left;
+    margin:0 20px 50px 0;
+}
+
+.feature_1-detail section img {
+    float: left;
+    margin-top:32px;
+}
+
+.feature_1-detail section h2 {
+    margin: 40px 0 20px 82px;
+}
+
+.feature_1-detail section p {
+    margin: 0 50px 0 82px;
+    color:gray;
+}
+.feature_2-wrapper{
+    background-image: url(images/ife_img_14.png);
+    height:756px;
+    background-size: 100% auto;
+}
+.feature_2{
+    display:flex;
+    flex-flow: column;
+    width:960px;
+    margin:0 auto;
+}
+.feature_2 section{
+    width:450px;
+    padding: 170px 0;
+}
+.feature_2 section h2{
+    color:white;
+    font-size: 40px;
+    font-weight: lighter;
+    padding-right:100px;
+}
+.feature_2 section p{
+    color:lightgray;
+    font-weight: lighter;
+    padding-right:100px;
+    line-height: 24px;
+    margin:40px 0;
+}
+.feature_2 section button{
+    width: 200px;
+    height: 44px;
+    border-radius: 2.4px;
+}
+.feature_2 section button:first-of-type{
+    background-color: white;
+    font-size: 14px;
+    margin-right:20px;
+}
+.feature_2 section button:last-of-type{
+    color:white;
+    background-color: transparent;
+    border: 1px solid rgba(230, 230, 250, 0.5);
+}
+.feature_2 .ipad{
+    position: absolute;
+    right:0;
+    margin-top:100px;
+}
+.feature_2 .ipad .outside{
+    padding:30px 0 30px 30px;
+    border:solid lightgray;
+    border-width: 1px 0 1px 1px;
+    background:transparent;
+    border-radius: 36px 0 0 36px;
+}
+.feature_2 .ipad .dot{
+    display:inline-block;
+    width:10px;
+    height:10px;
+    border:1px solid lightgray;
+    border-radius:50%;
+   margin:0 25px 268px 0;
+}
+.feature_2 .ipad .inside{
+    display:inline-block;
+}
+.feature_3{
+    width:960px;
+    margin:0 auto;
+    text-align: center;
+    padding:100px 0;
+}
+.feature_3 h1{
+    font-size: 40px;
+    font-weight: lighter;
+}
+.feature_3-detail{
+    display:flex;
+}
+.feature_3-detail section{
+    margin-top:60px;
+    padding:0 36px;
+}
+.feature_3-detail section p{
+    padding-top:36px;
+    font-weight: lighter;
+}
+.feature_4-wrapper{
+    border:solid lightgray;
+    border-width: 1px 0;
+}
+.feature_4{
+    padding:20px 0;
+    width:960px;
+    margin:0 auto;
+}
+.feature_4 section{
+    position: relative;
+    overflow:auto;
+    margin:80px 0;
+}
+.feature_4 section:first-of-type img{
+    float:left;
+}
+.feature_4 section:last-of-type img{
+    float:right;
+}
+.feature_4 section h2{
+    font-size: 1.2em;
+    line-height: 34px;
+}
+.feature_4 section p{
+    color:dimgray;
+    width:340px;
+}
+.feature_4 section:first-of-type h2{
+    margin:50px 0 50px 620px;
+}
+.feature_4 section:first-of-type p{
+    margin-left:620px;
+}
+.feature_4 section:last-of-type h2{
+    margin:50px 620px 50px 0;
+}
+.team{
+    flex-wrap: wrap;
+    width:960px;
+    margin:0 auto;
+    text-align: center;
+    padding:60px 0;
+}
+.team h1{
+    font-size: 40px;
+    font-weight: lighter;
+    margin:20px 0;
+}
+.team:not(section p) p{
+    width:700px;
+    margin:0 auto 50px;
+    color:18px;
+    font-weight: lighter;
+}
+.team-detail{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.team-detail section{
+    margin:10px 0;
+    position: relative;
+}
+.individual-detail{
+    position: absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0, 0, 0, 0.5);
+    top:0;
+    left:0;
+    text-align: center;
+    opacity: 0;
+}
+.individual-detail:hover{
+    opacity: 1;
+}
+.individual-detail h3{
+    color:white;
+    margin:104px 0 10px;
+}
+.individual-detail p{
+    color:silver;
+}
+.individual-detail ul{
+    list-style-type: none;
+    margin-top:20px;
+    padding:0;
+}
+.individual-detail li{
+    display:inline-block;
+    border:1px rgba(255, 255, 255, 0.3) solid;
+    width:60px;
+    height:60px;
+    border-radius: 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin:12px;
+    position: relative;
+}
+.individual-detail li:nth-of-type(1){
+    background-image: url(images/Facebook.png);
+}
+.individual-detail li:nth-of-type(2){
+    background-image: url(images/Twitter.png);
+}
+.individual-detail li:nth-of-type(3){
+    background-image: url(images/Instagram.png);
+}
+.individual-detail a{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+.contact-wrapper{
+    border:solid lightgray;
+    border-width: 1px 0;
+}
+.contact{
+    width:960px;
+    margin:80px auto;
+    overflow: auto;
+}
+.contact-box{
+    position: relative;
+    width:460px;
+    height:580px;
+    border:1px lightgray solid;
+    border-radius: 5px;
+    text-align: center;
+    float:left;
+}
+.contact-box h2{
+    margin:40px 0;
+}
+.contact-box input{
+    width:70%;
+    height:3.5em;
+    padding:10px;
+    margin:0 auto 20px;
+}
+.contact-box textarea{
+    width:70%;
+    height:15em;
+    padding:10px;
+    margin:0 auto 20px;
+    resize: none;
+    font-family: Arial;
+}
+.contact-box button{
+    width:70%;
+    height:3.5em;
+    background:#141414;
+    border:0;
+    color:white;
+}
+.contact-detail{
+    display: flex;
+    flex-flow: column;
+    margin:80px 0 0 580px;
+}
+.contact-detail h1{
+    font-size: 34px;
+    font-weight: normal;
+    margin-bottom:20px;
+}
+.contact-detail p{
+    font-size:14px;
+    color:dimgray;
+}
+.contact-detail section{
+    margin:76px 0 -50px 0;
+    display: flex;
+    align-items: center;
+}
+.contact-detail section p{
+    margin-left:20px;
+    line-height: 26px;
+    color: black;
+}
+.footer-wrapper{
+    background:#141414;
+}
+.footer{
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width:1200px;
+    margin:0 auto;
+    color:white;
+    padding:60px 0 120px;
+}
+.footer a{
+    color:white;
+    text-decoration: none;
+}
+.footer section{
+    flex:1;
+}
+.footer section h2{
+    margin:15px 0;
+}
+.footer section ul{
+    list-style: none;
+    padding:0;
+    opacity: 0.3;
+    font-weight: lighter;
+}
+.footer section li{
+    padding: 10px 0;
+    line-height: 30px;
+}
+.footer section p{
+    opacity: 0.3;
+    font-weight: lighter;
+}
+.footer section:last-of-type{
+    flex:1.5;
+}
+.footer section:last-of-type p{
+    width:250px;
+    padding: 10px 0 20px;
+    line-height: 30px;
+}
+.footer section:last-of-type li{
+    display: inline-block;
+    margin-right: 15px;
+    position: relative;
+}
+.footer section:last-of-type a{
+    position: absolute;
+    width:100%;
+    height: 100%;
+    top:0;
+    left:0;
+}
