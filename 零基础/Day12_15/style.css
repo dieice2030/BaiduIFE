@@ -101,18 +101,20 @@
     left:80px;
     position: fixed;
     float:left;
-    width:260px;
+    /* width:260px; */
     background-color: #222c3c;
-    overflow: auto;
+    overflow: scroll;
     /* margin-left: 100px; */
 }
 .subnav{
-    width:210px;
+    position: relative;
+    width:260px;
     height:100vh;
     margin:0 auto;
 }
 .subnav section{
     padding:20px 0;
+    margin:0 18px;
     position: relative;
 }
 .subnav section:nth-of-type(2){
@@ -175,7 +177,10 @@
     text-align: center;
 }
 .subnav .active-highlight{
-    left:-30px;
+    left:-18px;
+}
+.overflow{
+    margin-bottom: 40px;
 }
 /* .subnav .noti-num p{
     line-height: 16px;
@@ -183,15 +188,17 @@
 } */
 .goals{
     position:fixed;
+    left:80px;
     bottom:0;
-    width:210px;
+    padding:0 18px;
+    width:260px;
     height:40px;
     background-color: #222c3c;
 }
 .goals p:last-of-type{
     position: absolute;
     top:0;
-    right:0;
+    right:18px;
 }
 #goal-bar{
     width:100%;
@@ -208,6 +215,7 @@
 }
 .main-wrapper{
     /* z-index:-100; */
+    background:white;
     position: relative;
     margin-left:340px;
 }
@@ -225,7 +233,7 @@
     font-weight: normal;
 }
 .main-header .user-info{
-    position: absolute;
+    position: fixed;
     right:28px;
     top:26px;
     width:230px;
