@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Day17_18</title>
+    <style>
+        table{
+            border-collapse:collapse;
+        }
+        table td{
+            width:60px;
+            height:20px;
+            border:1px solid black;
+            text-align: center;
+        }
+        table td:nth-last-of-type(odd){
+            background:deepskyblue;
+            color:lightyellow;
+        }
+        table td:nth-last-of-type(even){
+            background:lightyellow;
+            color:deepskyblue;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>九九乘法表</thead>
+        <tbody id="table99">
+        </tbody>
+    </table>
+    <script>
+        var table=document.getElementById('table99');
+
+        for(var i=1;i<=9;i++){
+            var newRow=document.createElement('tr');
+            for(var j=1;j<=i;j++){
+                var newCell=document.createElement('td');
+                newCell.append(i+'*'+j+'='+i*j);
+                console.log(i+'*'+j+'='+i*j);
+                newRow.appendChild(newCell);
+            }
+            table.appendChild(newRow);
+        }
+    </script>
+</body>
+</html>
