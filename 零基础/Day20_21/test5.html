@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+    <button id="fade-btn">淡入</button>
+    <script>
+        var fadeObj = document.getElementById('fade-obj');
+        var btn = document.getElementById('fade-btn');
+        fadeObj.style.opacity = 0;
+
+        function fade(element) {
+            element.style.opacity -= 0.005;
+        }
+
+        function bloom(element) {
+            element.style.opacity = 0.005+ parseFloat(element.style.opacity); //淡入的时候使用+运算符，由于JS默认字符串操作，所以需要将属性值强制转化为数值，是个大坑
+        }
+
+        // var blooming=setinterval(bloom,8,fadeObj);
+        btn.onclick = function () {
+            var fadeObj = document.getElementById('fade-obj');
+            if (btn.innerHTML === '淡出') {
+                var fading = setInterval(fade, 8, fadeObj);
+                btn.setAttribute('disabled', 'true');
+                setTimeout(function () {
+                    btn.removeAttribute('disabled');
+                    btn.innerHTML = '淡入';
+                    clearInterval(fading);
+                }, 1600)
+            } else if (btn.innerHTML === '淡入') {
+                var blooming = setInterval(bloom, 8, fadeObj);
+                btn.setAttribute('disabled', 'true');
+                setTimeout(function () {
+                    btn.removeAttribute('disabled');
+                    btn.innerHTML = '淡出';
+                    clearInterval(blooming);
+                }, 1600)
+            }
+        }
+    </script>
+</body>
+
+</html>

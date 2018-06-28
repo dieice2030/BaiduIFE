@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sprites</title>
+    <style>
+        #smile{
+            width:480px;
+            height:479px;
+            background-image: url(erik_ce204002.jpg);
+        }
+    </style>
+</head>
+<body>
+    <div id="smile"></div>
+    <script>
+        var smile=document.getElementById('smile');
+        smile.style.backgroundPositionY=0;
+        var pY=-1;
+        var dir=0;
+        setInterval(function(){
+            if(dir===0){
+                pY+=480;
+            }
+            else if(dir===1){
+                pY-=480;
+            }
+            if(pY>=7680){
+                dir=1;
+            }
+            else if(pY<=480){
+                dir=0;
+            }
+            smile.style.backgroundPositionY=pY+'px';
+        },50)
+    </script>
+</body>
+</html>

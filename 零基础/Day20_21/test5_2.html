@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+    <button id="fade-btn">淡出</button>
+    <script>
+        var fadeObj=document.getElementById('fade-obj');
+        var btn=document.getElementById('fade-btn');
+        fadeObj.style.opacity=1;
+        btn.onclick=function(){
+            if(btn.innerHTML==='淡出'){
+                btn.setAttribute('disabled','true');
+                var t=setTimeout(function(){
+                    fadeObj.style.opacity-=0.005;
+                    if(fadeObj.style.opacity>0)
+                        setTimeout(arguments.callee,8,fadeObj);
+                    else{
+                        btn.removeAttribute('disabled');
+                        btn.innerHTML = '淡入';
+                    }
+
+                },8,fadeObj);
+            }else if(btn.innerHTML==='淡入'){
+                btn.setAttribute('disabled','true');
+                var t=setTimeout(function(){
+                    fadeObj.style.opacity=0.005+parseFloat(fadeObj.style.opacity);
+                    if(fadeObj.style.opacity<1)
+                        setTimeout(arguments.callee,8,fadeObj);
+                    else{
+                        btn.removeAttribute('disabled');
+                        btn.innerHTML = '淡出';
+                    }
+                },8,fadeObj)
+            }
+
+        }
+    </script>
+</body>
+</html>
