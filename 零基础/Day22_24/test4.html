@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<head></head>
+
+<body>
+    <script>
+        var tree = {
+            "id": 0,
+            "name": "root",
+            "left": {
+                "id": 1,
+                "name": "Simon",
+                "left": {
+                    "id": 3,
+                    "name": "Carl",
+                    "left": {
+                        "id": 7,
+                        "name": "Lee",
+                        "left": {
+                            "id": 11,
+                            "name": "Fate"
+                        }
+                    },
+                    "right": {
+                        "id": 8,
+                        "name": "Annie",
+                        "left": {
+                            "id": 12,
+                            "name": "Saber"
+                        }
+                    }
+                },
+                "right": {
+                    "id": 4,
+                    "name": "Tony",
+                    "left": {
+                        "id": 9,
+                        "name": "Candy"
+                    }
+                }
+            },
+            "right": {
+                "id": 2,
+                "name": "right",
+                "left": {
+                    "id": 5,
+                    "name": "Carl",
+                },
+                "right": {
+                    "id": 6,
+                    "name": "Carl",
+                    "right": {
+                        "id": 10,
+                        "name": "Kai"
+                    }
+                }
+            }
+        }
+
+        // 假设id和name均不会重复，根据输入name找到对应的id
+        function findIdByName(name) {
+            var p=[];
+            var dir=[];
+            p.push(tree);
+            find();
+            function find(isBack){
+                if(p.length===0){
+                    console.log('未能找到名为'+name+'的id');
+                    return;
+                }
+                else if(p[p.length-1].name===name){
+                    console.log(name+'对应的id是'+p[p.length-1].id);
+                    return;
+                }
+                if(isBack&&dir[dir.length-1]==='L'){
+                    dir.pop();
+                    if(p[p.length-1].right){
+                        p.push(p[p.length-1].right);
+                        dir.push('R');
+                        find();
+                    }
+                    else{
+                        p.pop();
+                        find(true);
+                    }
+                }
+                else if(isBack&&dir[dir.length-1]==='R'){
+                    dir.pop();
+                    p.pop();
+                    find(true);
+                }
+                else{
+                    if(p[p.length-1].left){
+                        p.push(p[p.length-1].left);
+                        dir.push('L');
+                        find();
+                    }
+                    else if(p[p.length-1].right){
+                        p.push(p[p.length-1].right);
+                        dir.push('R');
+                        find();
+                    }
+                    else{
+                        p.pop();
+                        find(true);
+                    }
+                }
+            }
+        }
+
+        // 假设id和name均不会重复，根据输入id找到对应的name
+        function findNameById(id) {
+            var p=[];
+            var dir=[];
+            p.push(tree);
+            find();
+            function find(isBack){
+                if(p.length===0){
+                    console.log('未能找到id为'+id+'的name');
+                    return;
+                }
+                else if(p[p.length-1].id===id){
+                    console.log(id+'对应的name是'+p[p.length-1].name);
+                    return;
+                }
+                if(isBack&&dir[dir.length-1]==='L'){
+                    dir.pop();
+                    if(p[p.length-1].right){
+                        p.push(p[p.length-1].right);
+                        dir.push('R');
+                        find();
+                    }
+                    else{
+                        p.pop();
+                        find(true);
+                    }
+                }
+                else if(isBack&&dir[dir.length-1]==='R'){
+                    dir.pop();
+                    p.pop();
+                    find(true);
+                }
+                else{
+                    if(p[p.length-1].left){
+                        p.push(p[p.length-1].left);
+                        dir.push('L');
+                        find();
+                    }
+                    else if(p[p.length-1].right){
+                        p.push(p[p.length-1].right);
+                        dir.push('R');
+                        find();
+                    }
+                    else{
+                        p.pop();
+                        find(true);
+                    }
+                }
+            }
+        }
+
+        // 把这个对象中所有的名字以“前序遍历”的方式全部输出到console中
+        function getListWithDLR(){
+            var p_DLR=[];
+            var dir_DLR=[];
+            p_DLR.push(tree);
+            funDLR();
+            function funDLR(isBack) {
+                if(p_DLR.length===0){
+                    console.log('前序遍历完成')                
+                    return;
+                }
+                if(isBack && dir_DLR[dir_DLR.length-1]==='L'){                      //从左节点回溯
+                    dir_DLR.pop();
+                    if(p_DLR[p_DLR.length-1].right){
+                        p_DLR.push(p_DLR[p_DLR.length-1].right);
+                        dir_DLR.push('R');
+                        funDLR();
+                    }
+                    else{
+                        p_DLR.pop();
+                        funDLR(true);
+                    }
+                }
+                else if(isBack && dir_DLR[dir_DLR.length-1]==='R'){                //从右节点回溯
+                    p_DLR.pop();
+                    dir_DLR.pop();
+                    funDLR(true);
+                }
+                else{                                   //遍历
+                    console.log(p_DLR[p_DLR.length-1].name);
+                    if(p_DLR[p_DLR.length-1].left){
+                        p_DLR.push(p_DLR[p_DLR.length-1].left);
+                        dir_DLR.push('L');
+                        funDLR();
+                    }
+                    else if(p_DLR[p_DLR.length-1].right){
+                        p_DLR.push(p_DLR[p_DLR.length-1].right);
+                        dir_DLR.push('R');
+                        funDLR();
+                    }
+                    else{
+                        p_DLR.pop();
+                        funDLR(true);
+                    }
+                }
+            }
+        }
+
+        // 把这个对象中所有的名字以“中序遍历”的方式全部输出到console中
+        function getListWithLDR() {
+            var p_LDR = [];
+            var dir_LDR = [];
+            p_LDR.push(tree);
+            funLDR();
+            function funLDR(isBack) {
+                if(p_LDR.length===0){
+                    console.log('中序遍历完成');                
+                    return;
+                }
+                if(!p_LDR[p_LDR.length-1].left&&!isBack){
+                    console.log(p_LDR[p_LDR.length-1].name);                        //没有左节点的非回溯节点的节点（叶子节点，没有左节点的根节点）
+                }
+                if(isBack&&dir_LDR[dir_LDR.length-1]==='L'){
+                    console.log(p_LDR[p_LDR.length-1].name);                        //从左节点回溯的节点
+                }
+                if(isBack && dir_LDR[dir_LDR.length-1]==='L'){                      //从左节点回溯的节点
+                    dir_LDR.pop();
+                    
+                    if(p_LDR[p_LDR.length-1].right){
+                        p_LDR.push(p_LDR[p_LDR.length-1].right);
+                        dir_LDR.push('R');
+                        funLDR();
+                    }
+                    else{
+                        p_LDR.pop();
+                        funLDR(true);
+                    }
+                }
+                else if(isBack && dir_LDR[dir_LDR.length-1]==='R'){                //从右节点回溯
+                    p_LDR.pop();
+                    dir_LDR.pop();
+                    funLDR(true);
+                }
+                else{                                   //遍历
+                    if(p_LDR[p_LDR.length-1].left){
+                        p_LDR.push(p_LDR[p_LDR.length-1].left);
+                        dir_LDR.push('L');
+                        funLDR();
+                    }
+                    else if(p_LDR[p_LDR.length-1].right){
+                        p_LDR.push(p_LDR[p_LDR.length-1].right);
+                        dir_LDR.push('R');
+                        funLDR();
+                    }
+                    else{
+                        p_LDR.pop();
+                        funLDR(true);
+                    }
+                }
+            }
+        }
+
+
+        // 把这个对象中所有的名字以“后序遍历”的方式全部输出到console中
+        function getListWithLRD(){
+            var p_LRD=[];
+            var dir_LRD=[];
+            p_LRD.push(tree);
+            funLRD();
+            function funLRD(isBack) {
+                if(p_LRD.length===0){
+                    console.log('后序遍历完成');                
+                    return;
+                }
+                if(!p_LRD[p_LRD.length-1].left&&!p_LRD[p_LRD.length-1].right){
+                    console.log(p_LRD[p_LRD.length-1].name);                        //叶子节点
+                }
+                if(isBack&&dir_LRD[dir_LRD.length-1]==='L'&&!p_LRD[p_LRD.length-1].right){
+                    console.log(p_LRD[p_LRD.length-1].name);                        //从左节点回溯且没有右节点的节点
+                }
+                if(isBack&&dir_LRD[dir_LRD.length-1]==='R'){
+                    console.log(p_LRD[p_LRD.length-1].name);                        //从右节点回溯的节点
+                }
+                if(isBack && dir_LRD[dir_LRD.length-1]==='L'){                      //从左节点回溯的节点
+                    dir_LRD.pop();
+                    
+                    if(p_LRD[p_LRD.length-1].right){
+                        p_LRD.push(p_LRD[p_LRD.length-1].right);
+                        dir_LRD.push('R');
+                        funLRD();
+                    }
+                    else{
+                        p_LRD.pop();
+                        funLRD(true);
+                    }
+                }
+                else if(isBack && dir_LRD[dir_LRD.length-1]==='R'){                //从右节点回溯
+                    p_LRD.pop();
+                    dir_LRD.pop();
+                    funLRD(true);
+                }
+                else{                                   //遍历
+                    if(p_LRD[p_LRD.length-1].left){
+                        p_LRD.push(p_LRD[p_LRD.length-1].left);
+                        dir_LRD.push('L');
+                        funLRD();
+                    }
+                    else if(p_LRD[p_LRD.length-1].right){
+                        p_LRD.push(p_LRD[p_LRD.length-1].right);
+                        dir_LRD.push('R');
+                        funLRD();
+                    }
+                    else{
+                        // console.log(p_LRD[p_LRD.length-1].name);
+                        p_LRD.pop();
+                        funLRD(true);
+                    }
+                }
+            }
+        }
+    </script>
+</body>

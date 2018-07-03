@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+    <script>
+        function sort1(){
+            var arr = [43, 54, 4, -4, 84, 100, 58, 27, 140];
+            function compare(a,b){
+                return a-b;
+            }
+            arr.sort(compare);
+            console.log(arr);
+        }
+        function sort2(){
+            var arr = ['apple', 'dog', 'cat', 'car', 'zoo', 'orange', 'airplane'];
+            arr.sort();
+            console.log(arr);
+        }
+        function sort3(){
+            var arr = [[10, 14], [16, 60], [7, 44], [26, 35], [22, 63]];
+            function compare(a,b){
+                return a[1]-b[1];
+            }
+            arr.sort(compare);
+            console.log(arr);
+        }
+        function sort4(){
+            var arr = [[22, 63], [16, 60], [7, 44], [26, 35], [10, 14]];
+            function compare(a,b){
+                return a[0]-b[0];
+            }
+            arr.sort(compare);
+            console.log(arr);
+        }
+        function sort5(){
+            var arr = [
+                {
+                    id: 1,
+                    name: 'candy',
+                    value: 40
+                }, {
+                    id: 2,
+                    name: 'Simon',
+                    value: 50
+                }, {
+                    id: 3,
+                    name: 'Tony',
+                    value: 45
+                }, {
+                    id: 4,
+                    name: 'Annie',
+                    value: 60
+                }
+            ];
+            function compare(a,b){
+                return a.value-b.value;
+            }
+            arr.sort(compare);
+            console.log(arr);
+        }
+    </script>
+</body>

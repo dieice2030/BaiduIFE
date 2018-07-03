@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+    <script>
+        var scoreObject = {
+            "Tony": {
+                "Math": 95,
+                "English": 79,
+                "Music": 68
+            }, 
+            "Simon": {
+                "Math": 100,
+                "English": 95,
+                "Music": 98
+            }, 
+            "Annie": {
+                "Math": 54,
+                "English": 65,
+                "Music": 88
+            }
+        }
+        function object2array(){
+            var arr=[];
+            for(item in scoreObject){
+                var temp=[];
+                temp.push(item);
+                for(score in scoreObject[item]){
+                    temp.push(scoreObject[item][score]);
+                }
+                arr.push(temp);
+            }
+            console.log(arr);
+        }
+        var menuArr = [
+            [1, "Area1", -1],
+            [2, "Area2", -1],
+            [3, "Area1-1", 1],
+            [4, "Area1-2", 1],
+            [5, "Area2-1", 2],
+            [6, "Area2-2", 2],
+            [7, "Area1-2-3", 4],
+            [8, "Area2-2-1", 6],
+        ];
+
+        function initSubMenu(subMenus){                     //将菜单数组的每项初始化为子菜单对象
+            for(item of menuArr){
+                subMenus.push(new SubMenu(item[1]));
+            }
+        }
+        function SubMenu(name){                             //子菜单对象生成函数
+            this.name=name;
+        }
+        function Menu(n,arr){                               //菜单对象生成函数（接收菜单id和子菜单数组两个参数）
+            for(var i=1;i<=arr.length;i++){
+                this[n[i-1]]=arr[i-1];
+            }
+        }
+        
+        function array2object(){
+            var subMenus=[];
+            initSubMenu(subMenus);                          //将菜单数组的每项初始化为子菜单对象
+            var menuObject;
+            for(var i=menuArr.length-1;i>=0;){
+            var tempArr=[];                                 //临时存放子菜单数组
+            var n=[];                                       //临时存放id数组
+            var temp=menuArr[i][2];
+                while(true){
+                    if(i<0||temp!==menuArr[i][2]){          //当父菜单序号不同时退出循环
+                        break;
+                    }
+                    tempArr.unshift(subMenus[i]);
+                    n.unshift(menuArr[i][0]);
+                    temp=menuArr[i][2];
+                    i--;
+                }
+                if(i>=0){
+                    subMenus[temp-1].subMenu=new Menu(n,tempArr);   //将父菜单相同的子菜单作为父菜单的subMenu属相加入
+                }
+                else{
+                    menuObject=new Menu(n,tempArr);                 //根菜单
+                }
+            }
+            console.log(menuObject);
+        }
+    </script>
+</body>
