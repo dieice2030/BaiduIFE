@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+    <script>
+        function weekFormat(date,lang){
+            var week=date.getDay();
+            var result;
+            var weekday_zh=['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+            var weekday_en=['Sunday','Monday','Tuesday','Wensday','Thursday','Friday','Saturday'];
+            if(arguments.length===1){
+                lang='zh';
+            }
+            if(lang==='zh'){
+                result=weekday_zh[week];
+            }
+            if(lang==='en'){
+                result=weekday_en[week];
+            }
+            return result;
+        }
+        function addZero(num){
+            var result;
+            if(num<10){
+                result='0'+num;
+            }
+            else{
+                result=num;
+            }
+            return result;
+        }
+        function hour12(hour){
+            hour=parseInt(hour);
+            var result;
+            if(hour>0&&hour<12){
+                result='AM';
+            }
+            else{
+                result='PM';
+            }
+            return result;
+        }
+        function dateFormat(date,style){
+            var year=date.getFullYear();
+            var month=addZero(date.getMonth()+1);
+            var day=addZero(date.getDate());
+            var week=weekFormat(date);
+            var hour=addZero(date.getHours());
+            var minute=addZero(date.getMinutes());
+            var second=addZero(date.getSeconds());
+            var result;
+            if(arguments.length===1){
+                style='zh';
+            }
+            if(style==='zh'){
+                result=year+'年'+month+'月'+day+'日'+week+' '+hour+':'+minute+':'+second;
+            }
+            if(style==='en'){
+                week=weekFormat(date,'en');
+                mark=hour12(hour);
+                result=year+'-'+month+'-'+day+' '+week+' '+hour+':'+minute+':'+second+' '+mark;
+            }
+            console.log(result);
+            return result;
+        }
+        var date=new Date();
+        dateFormat(date,'zh');
+        dateFormat(date,'en');
+    </script>
+</body>

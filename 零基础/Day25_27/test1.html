@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+    <script>
+        function Go() {
+            console.log("Go");
+        }
+        
+        function GoSteps(n) {
+            if(arguments.length===0){
+                n=1;
+            }
+            if(n>0){
+                n=Math.floor(n);
+                while(n--){
+                    console.log('Go');
+                }
+            }
+        }
+    </script>
+</body>

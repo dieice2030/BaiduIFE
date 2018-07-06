@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<head></head>
+
+<body>
+    <select id="year-select">
+        <!-- <option value="2000">2000</option>
+        <option value="2001">2001</option>
+        <option value="2002">2002</option>
+        ……
+        <option value="2032">2002</option> -->
+    </select>
+
+    <select id="month-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        ……
+        <option value="12">12</option>
+    </select>
+
+    <select id="day-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        ……
+        <option value="31">31</option>
+    </select>
+
+    <select id="hour-select">
+        <option value="0">00</option>
+        <option value="1">01</option>
+        ……
+        <option value="23">23</option>
+    </select>
+
+    <select id="minute-select">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        ……
+        <option>59</option>
+    </select>
+
+    <select id="second-select">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        ……
+        <option>59</option>
+    </select>
+
+    <p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+
+    <script>
+        var yearSelect=document.querySelector('#year-select');
+        var monthSelect=document.querySelector('#month-select');
+        var daySelect=document.querySelector('#day-select');
+        var hourSelect=document.querySelector('#hour-select');
+        var minuteSelect=document.querySelector('#minute-select');
+        var secondSelect=document.querySelector('#second-select');
+        var p=document.querySelector('#result-wrapper');
+
+        function weekFormat(date,lang){
+            var week=date.getDay();
+            var result;
+            var weekday_zh=['星期日','星期一','星期二','星期三','星期四','星期五','星期六'];
+            var weekday_en=['Sunday','Monday','Tuesday','Wensday','Thursday','Friday','Saturday'];
+            if(arguments.length===1){
+                lang='zh';
+            }
+            if(lang==='zh'){
+                result=weekday_zh[week];
+            }
+            if(lang==='en'){
+                result=weekday_en[week];
+            }
+            return result;
+        }
+        function addZero(num){
+            var result;
+            if(num<10){
+                result='0'+num;
+            }
+            else{
+                result=num;
+            }
+            return result;
+        }
+        function hour12(hour){
+            hour=parseInt(hour);
+            var result;
+            if(hour>0&&hour<12){
+                result='AM';
+            }
+            else{
+                result='PM';
+            }
+            return result;
+        }
+        function dateFormat(date,style){
+            var year=date.getFullYear();
+            var month=addZero(date.getMonth()+1);
+            var day=addZero(date.getDate());
+            var week=weekFormat(date);
+            var hour=addZero(date.getHours());
+            var minute=addZero(date.getMinutes());
+            var second=addZero(date.getSeconds());
+            var result;
+            if(arguments.length===1){
+                style='zh';
+            }
+            if(style==='zh'){
+                result=year+'年'+month+'月'+day+'日'+week+' '+hour+':'+minute+':'+second;
+            }
+            if(style==='en'){
+                week=weekFormat(date,'en');
+                mark=hour12(hour);
+                result=year+'-'+month+'-'+day+' '+week+' '+hour+':'+minute+':'+second+' '+mark;
+            }
+            return result;
+        }
+        function addZero(num){
+            var result;
+            if(num===0){
+                result='00';
+            }
+            if(num<10){
+                result='0'+num;
+            }
+            else{
+                result=num;
+            }
+            return result;
+        }
+        function initOptions(select,start,stop,isAddZero){
+            select.innerHTML='';
+            for(var i=start;i<=stop;i++){
+                var options=document.createElement('option');
+                if(isAddZero){
+                    if(i<10){
+                    options.innerHTML=addZero(i);
+                    }
+                    else{
+                        options.innerHTML=i;
+                    }
+                }
+                else{
+                    options.innerHTML=i;
+                }
+                options.value=i;
+                select.appendChild(options);
+            }
+        }
+        function initYear(startYear,stopYear){
+            initOptions(yearSelect,2000,2032);
+        }
+        function initMonth(){
+            initOptions(monthSelect,1,12);
+        }
+        function initDate(){
+            var selectedYear=yearSelect.value;
+            var selectedMonth=Number(monthSelect.value);
+            var stopDay;
+            if((selectedMonth<=7&&selectedMonth%2==1)||(selectedMonth>=8&&selectedMonth%2==0)){
+                stopDay=31;
+            }
+            else if(selectedMonth===2){
+                if(selectedYear%4===0&&selectedYear%100!==0){
+                    stopDay=29;
+                }
+                else{
+                    stopDay=28;
+                }
+            }
+            else{
+                stopDay=30;
+            }
+            initOptions(daySelect,1,stopDay);
+        }
+        function initHour(){
+            initOptions(hourSelect,0,24,true);
+        }
+        function initMinute(){
+            initOptions(minuteSelect,0,59,true);
+        }
+        function initSecond(){
+            initOptions(secondSelect,0,59,true);
+        }
+
+        function toNow(){
+            var now=new Date();
+            var year=yearSelect.value;
+            var month=monthSelect.value-1;
+            var day=daySelect.value;
+            var hour=hourSelect.value;
+            var minute=minuteSelect.value;
+            var second=secondSelect.value;
+            var time=new Date(year,month,day,hour,minute,second);
+            var diff=time-now;
+            if(diff<0){
+                var diffSecond=Math.floor(-diff/1000)%60;
+                var diffMinute=Math.floor(-diff/(60*1000))%60;
+                var diffHour=Math.floor(-diff/(60*60*1000))%24;
+                var diffDay=Math.floor(-diff/(24*60*60*1000));
+                p.innerHTML='现在距离'+dateFormat(now)+'已经过去';
+            }
+            else{
+                var diffSecond=Math.floor(diff/1000)%60;
+                var diffMinute=Math.floor(diff/(60*1000))%60;
+                var diffHour=Math.floor(diff/(60*60*1000))%24;
+                var diffDay=Math.floor(diff/(24*60*60*1000));
+                p.innerHTML='现在距离'+dateFormat(now)+'还有';
+            }
+            p.innerHTML+=diffDay+'天'+diffHour+'小时'+diffMinute+'分钟'+diffSecond+'秒';
+        }
+        initYear(2000,2032);
+        initMonth();
+        initDate();
+        initHour();
+        initMinute();
+        initSecond();
+        yearSelect.addEventListener('change',function(){
+            initDate();
+        })
+        monthSelect.addEventListener('change',function(){
+            initDate();
+        })
+        setInterval(function(){
+            toNow();
+        },1000);
+    </script>
+</body>
