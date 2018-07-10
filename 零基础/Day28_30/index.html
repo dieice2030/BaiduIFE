@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mail</title>
+    <style>
+        *{
+            box-sizing:border-box;
+        }
+        #email-input{
+            width:200px;
+        }
+        #email-sug-wrapper{
+            width:200px;
+            list-style-type: none;
+            margin:0;
+            padding:0;
+        }
+        #email-sug-wrapper li:hover{
+            background:aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text">
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+
+
+    <script>
+        // 邮箱后缀List参考
+        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+        var email=document.getElementById('email-input');
+        var emailList=document.getElementById('email-sug-wrapper');
+        // email.onkeyup=function(){
+        //     console.log('keyup');          //长按无反应
+        // }
+        // email.onkeydown=function(){
+        //     console.log('keydown');     //均有反应
+        // }
+        // email.onkeypress=function(){
+        //     console.log('keypress');    //ESC、方向无反应，回车有反应
+        // }
+        email.oninput=function(){
+            emailList.innerHTML='';
+            console.log('input');       //ESC、方向、回车均无反应
+            var input=getInput();
+            var lists=genEmailSug(input);
+            fillUl(lists);
+            stateUl();
+        }
+        emailList.addEventListener('click',function(e){
+            var target=e.target;
+            if(target.nodeName==='LI'){
+                email.value=target.innerHTML;
+                emailList.setAttribute('hidden','true');
+            }
+        })
+
+
+        function getInput(){
+            return email.value.trim();
+        }
+        function genEmailSug(input){
+            var emailLists=[];
+            var post=[];
+            var pre=input.slice(0,i);
+            if(input.indexOf('@')!==-1){
+                var i=input.indexOf('@');
+                pre=input.slice(0,i);
+                for(item in postfixList){
+                    var test=input.slice(i+1,input.length);
+                    if(postfixList[item].indexOf(input.slice(i+1,input.length))===0){
+                        post.push(postfixList[item]);
+                    }
+                }
+            }
+            if(post.length===0){
+                post=postfixList;
+            }
+            for(item in post){
+                var emailLi=document.createElement('li');
+                emailLi.innerHTML=pre+'@'+post[item];
+                emailLists.push(emailLi);
+            }
+            return emailLists;
+        }
+        function fillUl(lists){
+            emailList.innerHTML='';
+            for(item in lists){
+                emailList.append(lists[item]);
+            }
+        }
+        function stateUl(){
+            if(email.value.trim().length===0){
+                emailList.setAttribute('hidden','true');
+            }
+            else{
+                emailList.removeAttribute('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

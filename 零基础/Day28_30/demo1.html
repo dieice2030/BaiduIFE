@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mail</title>
+    <style>
+        *{
+            box-sizing:border-box;
+        }
+        #email-input{
+            width:200px;
+        }
+        #email-sug-wrapper{
+            width:200px;
+            list-style-type: none;
+            margin:0;
+            padding:0;
+        }
+        #email-sug-wrapper li:hover{
+            background:aqua;
+        }
+        /* #email-sug-wrapper li:first-of-type{
+            background:skyblue;
+        } */
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text">
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+    
+    
+    <script>
+        // 基于数据方案，待实现：转义、焦点（上下、点击、全选）
+        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+        var email=document.getElementById('email-input');
+        var emailList=document.getElementById('email-sug-wrapper');
+        var selectIndex=0;
+        email.focus();
+        //输入监听事件，主要负责监听input中内容变化。包括处理input中文字（去括号），与邮箱前缀匹配，生成邮箱建列表，根据input中内容控制建议列表显示。默认第一个建议的选中状态（感觉与之后的有重复）
+        email.addEventListener('input',function(e){
+            if(e.keyCode!==38&&e.keyCode!==40){
+                selectIndex=0;
+            }
+            var input=getInput();
+            stateUl(input);
+            emailList.innerHTML='';
+            var lists=genEmailSug(input);
+            fillUl(lists);
+            styEmailSug();
+        })
+        //鼠标点击选择建议，并隐藏建议列表
+        emailList.addEventListener('click',function(e){
+            select(e);
+            email.focus();
+            emailList.setAttribute('hidden','true');
+        })
+        //键盘操作控制监听
+        email.addEventListener('keydown',function(e){
+            if(e.keyCode===38){                
+                if(selectIndex===0){
+                    selectIndex=postfixList.length-1
+                }else{
+                    selectIndex--;
+                }
+                e.returnValue=false;                        //清除上下键造成的光标移动(不适用于keyup)
+            }
+            if(e.keyCode===40){
+                if(selectIndex===postfixList.length-1){
+                    selectIndex=0;
+                }
+                else{
+                    selectIndex++;
+                }
+                e.returnValue=false;                        //清除上下键造成的光标移动(不适用于keyup)
+            }
+            if(e.keyCode===13||e.keyCode===9){
+                select(emailList.children[selectIndex]);
+                emailList.setAttribute('hidden','true');
+            }
+            if(e.keyCode===27){
+                email.setSelectionRange(0,email.value.length);
+            }
+            styEmailSug();
+        })
+        //处理input中的内容（去空格）
+        function getInput(){
+            return email.value.trim();
+        }
+        //生成建议列表
+        function genEmailSug(input){
+            var emailLists=[];
+            var post=[];
+            var pre=input.slice(0,i);
+            if(input.indexOf('@')!==-1){
+                var i=input.indexOf('@');
+                pre=input.slice(0,i);
+                for(item in postfixList){
+                    var test=input.slice(i+1,input.length);
+                    if(postfixList[item].indexOf(input.slice(i+1,input.length))===0){
+                        post.push(postfixList[item]);
+                    }
+                }
+            }
+            if(post.length===0){
+                post=postfixList;
+            }
+            for(item in post){
+                var emailLi=document.createElement('li');
+                emailLi.innerHTML=pre+'@'+post[item];
+                emailLists.push(emailLi);
+            }
+            return emailLists;
+        }
+        //将生成的建议列表插入到ul元素中
+        function fillUl(lists){
+            emailList.innerHTML='';
+            for(item in lists){
+                emailList.append(lists[item]);
+            }
+        }
+        //根据input中是否有内容，决定是否显示建议列表
+        function stateUl(input){
+            if(input.length===0){
+                emailList.setAttribute('hidden','true');
+            }
+            else{
+                emailList.removeAttribute('hidden');
+            }
+        }
+        //选中建议项时将建议项自动输入到input中
+        function select(e){
+            var target=e.target||e;
+            if(target.nodeName==='LI'){
+                email.value=target.innerHTML;
+            }
+        }
+        //非鼠标悬浮时，选中建议项的样式（依靠全局变量selectIndex控制
+        function styEmailSug(){
+            var emailLists=emailList.children;
+            var i=0;
+            for(item of emailLists){
+                // var emailLi=emailLists[item];
+                if(Number(i)===selectIndex){
+                    item.style.backgroundColor='skyblue';
+                }
+                else{
+                    item.style.backgroundColor='transparent';
+                }
+                i++;
+            }
+        }
+
+    </script>
+</body>
+</html>
